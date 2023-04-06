@@ -14,6 +14,6 @@ def solution(p: float, x: np.array) -> tuple:
     n = x.size
     loc = x.mean()
     scale = np.sqrt(np.var(x)) / np.sqrt(len(x))
-    return 2 / 23**2 * (loc + gamma.ppf(alpha / 2, a=n, scale=1/n) + 1/2) , \
-           2 / 23**2 * (loc + 1/2 + gamma.ppf(1 - alpha / 2, a=n, scale=1/n))
+    return 2 / 23**2 * (loc + erlang.ppf(alpha / 2, n, loc=0, scale=1/n) - 1/2) , \
+           2 / 23**2 * (loc - 1/2 + erlang.ppf(1 - alpha / 2, n, loc=0, scale=1/n))
 
